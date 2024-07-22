@@ -1,4 +1,4 @@
-package com.clean.architecture.tuto.core.exceptions;
+package fr.planandchill.exceptions;
 
 public class TechnicalException extends Exception {
     public TechnicalException(String message) {

@@ -1,4 +1,4 @@
-package com.clean.architecture.tuto.core.exceptions;
+package fr.planandchill.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

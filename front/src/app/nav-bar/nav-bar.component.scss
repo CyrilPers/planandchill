@@ -1,0 +1,17 @@
+.nav-bar {
+   background-color: #26272b;
+   color: white;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 5px 20%;
+
+   .btn-div {
+      display: flex;
+      gap: 5px;
+   }
+
+   h1 {
+      font-weight: 200;
+   }
+}

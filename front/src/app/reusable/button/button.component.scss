@@ -1,0 +1,40 @@
+.custom-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  border: 1px solid #d2d6dc;
+  border-radius: 0.375rem;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.2s ease all;
+}
+
+.white-btn {
+  background-color: white;
+  color: black;
+  &:focus {
+    background-color: #f7fafc;
+    border-color: rgb(174, 186, 201); 
+  }
+  &:active {
+    color: white;
+    background-color: gray; 
+    border-color: #8c99a9; 
+  }
+}
+
+.black-btn {
+  background-color: #26272b;
+  border: 1px solid gray;
+  color: white;
+  &:hover {
+    background-color: rgb(31, 31, 31);
+    border-color: rgb(174, 186, 201); 
+  }
+  &:active {
+    color: black;
+    background-color: white; 
+    border-color: #8c99a9; 
+  }
+}
