@@ -52,16 +52,21 @@ public class CreateCustomerUE {
 
 
     private void testStringMandatory(List<String> errorsList, String str, String fieldName, int maxLength, int minLength) {
+        String startWord = getStartWord(fieldName);
         if (StringUtils.isEmpty(str)) {
-            errorsList.add("Le " + fieldName + " d'une personne est obligatoire");
+            errorsList.add(startWord + fieldName + " d'une personne est obligatoire");
         } else {
             if (str.length() > maxLength) {
-                errorsList.add("Le " + fieldName + " d'une personne ne doit pas dépasser " + maxLength + " caracteres");
+                errorsList.add(startWord + fieldName + " d'une personne ne doit pas dépasser " + maxLength + " caracteres");
             }
             if (str.length() < minLength) {
-                errorsList.add("Le " + fieldName + " d'une personne doit avoir au minimum " + minLength + " caracteres");
+                errorsList.add(startWord + fieldName + " d'une personne doit avoir au minimum " + minLength + " caracteres");
             }
         }
+    }
+
+    private String getStartWord(String fieldName) {
+        return fieldName.equals("email") ? "L'" : "Le ";
     }
 
 }
