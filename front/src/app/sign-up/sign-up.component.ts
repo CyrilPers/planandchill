@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../reusable/button/button.component';
 import { FormsModule, NgForm} from '@angular/forms';
 import { checkForm } from '../utils/checkPassword';
+import {Customer} from "../customer/customer";
+import {GestionCustomerService} from "../core/services/gestion-customer/gestion-customer.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -13,15 +16,26 @@ import { checkForm } from '../utils/checkPassword';
 export class SignUpComponent {
   passwordErrors: String [] = [];
   formSubmitted: boolean = false;
+  customer: Customer;
   @ViewChild('signInForm') signInForm: NgForm;
 
+  constructor(private router: Router,
+              private gestionCustomerService: GestionCustomerService) {}
+
   ngOnInit(): void {
+    this.initCustomer(this.customer);
   }
   
   onSubmit = ():void => {
     console.log("submit")
-    this.formSubmitted = true;
     this.checkPassword();
+    this.formSubmitted = true;
+    if (this.passwordErrors.length == 0) {
+      console.log("create")
+      this.gestionCustomerService.createCustomer(this.customer).subscribe(() =>
+          this.router.navigate(["/sign-in"])
+      );
+    }
   }
 
   checkPassword = ():void => {
@@ -31,5 +45,9 @@ export class SignUpComponent {
     } else {
       this.passwordErrors.push('Veuillez entrer un mot de passe')
     }
+  }
+
+  private initCustomer(customer: Customer) {
+    this.customer = new Customer();
   }
 }

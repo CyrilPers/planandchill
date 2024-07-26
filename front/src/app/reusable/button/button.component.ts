@@ -7,10 +7,10 @@ import { Component, Input } from '@angular/core';
     standalone: true
 })
 export class ButtonComponent {
-    @Input() label: String = "Bouton"
-    @Input() fontSize: String = "1rem"
-    @Input() padding: String = "0.5rem 1rem"
+    @Input() label: string = "Bouton"
+    @Input() fontSize: string = "1rem"
+    @Input() padding: string = "0.5rem 1rem"
     @Input() disabled: boolean = false
     // white or black
-    @Input() color: String = "white"
+    @Input() color: string = "white"
 }

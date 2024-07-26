@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface ICustomerRepositoryPT {
 
-
     Customer create(Customer customer) throws UnknownHostException, SQLException;
 
     List<Customer> getAll() throws UnknownHostException, SQLException;

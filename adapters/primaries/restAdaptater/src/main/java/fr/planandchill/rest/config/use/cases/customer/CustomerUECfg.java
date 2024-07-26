@@ -12,6 +12,11 @@ import org.springframework.context.annotation.DependsOn;
 public class CustomerUECfg {
 
     @Bean
+    public ICustomerRepositoryPT icustomerRepositoryPT() {
+        return new CustomerJpaRepository();
+    }
+
+    @Bean
     @DependsOn
     public CreateCustomerUE createCustomerUE(ICustomerRepositoryPT repository) {
         return new CreateCustomerUE(repository);
