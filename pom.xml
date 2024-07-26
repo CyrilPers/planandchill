@@ -9,8 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>adapters/repositoryJPA</module>
+        <module>adapters/secondaries/repositoryJPA</module>
         <module>core</module>
+        <module>adapters/primaries/restAdaptater</module>
     </modules>
 
     <properties>

@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -37,13 +40,18 @@ public class User {
     @Column(name = "account_locked", nullable = false)
     private Boolean accountLocked = false;
 
+    @Column(name = "creation_date", nullable = false)
+    private LocalDateTime creationDate;
+
     @ManyToMany(mappedBy = "user")
-    private Set<Address> addresses = new LinkedHashSet<>();
+    private List<Address> addresses = new ArrayList<>();
 
     @OneToOne(mappedBy = "idUser")
     private Customer customer;
 
     @OneToMany(mappedBy = "idUser")
-    private Set<Token> tokens = new LinkedHashSet<>();
+    private List<Token> tokens = new ArrayList<>();
+
+
 
 }
