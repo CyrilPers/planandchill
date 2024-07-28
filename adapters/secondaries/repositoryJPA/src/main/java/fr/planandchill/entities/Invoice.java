@@ -3,7 +3,7 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.Instant;
 
 @Getter
@@ -11,6 +11,7 @@ import java.time.Instant;
 @Table(name = "invoice")
 public class Invoice {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_invoice", nullable = false)
     private Integer id;
 

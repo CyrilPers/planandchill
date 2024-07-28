@@ -3,10 +3,11 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
+@Entity
 @Table(name = "county")
 public class County {
     @Id

@@ -3,7 +3,7 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.Instant;
 
 @Getter
@@ -12,6 +12,7 @@ import java.time.Instant;
 @Table(name = "token")
 public class Token {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_token", nullable = false)
     private Integer id;
 

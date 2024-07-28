@@ -2,8 +2,7 @@ package fr.planandchill.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
@@ -11,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "administrator")
 public class Administrator {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_administrator", nullable = false)
     private Integer id;
 

@@ -1,7 +1,7 @@
 package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Getter
@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @Table(name = "payment")
 public class Payment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_payment", nullable = false)
     private Integer id;
 

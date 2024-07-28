@@ -3,13 +3,14 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
 @Table(name = "membership")
 public class Membership {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_membership", nullable = false)
     private Integer id;
 
