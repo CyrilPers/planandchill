@@ -1,7 +1,7 @@
 package fr.planandchill.use.cases.customer;
 
 import fr.planandchill.exceptions.TechnicalException;
-import fr.planandchill.models.Customer;
+import fr.planandchill.models.CustomerDN;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 import fr.planandchill.exceptions.BusinessException;
 
@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.net.UnknownHostException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -27,10 +28,11 @@ public class CreateCustomerUE {
         this.repo = repo;
     }
 
-    public Customer execute(Customer customer) throws TechnicalException, BusinessException {
-        checkBusinessRules(customer); // check if the customer is valid
+    public CustomerDN execute(CustomerDN customerDN) throws TechnicalException, BusinessException {
+        customerDN.setCreationDate(LocalDateTime.now());
+        checkBusinessRules(customerDN); // check if the customerDN is valid
         try {
-            return repo.create(customer);
+            return repo.create(customerDN);
         } catch (UnknownHostException | SQLException e) {
             LOG.error(e.getMessage());
             e.printStackTrace();
@@ -38,15 +40,15 @@ public class CreateCustomerUE {
         }
     }
 
-    private void checkBusinessRules(Customer customer) throws BusinessException, TechnicalException {
+    private void checkBusinessRules(CustomerDN customerDN) throws BusinessException, TechnicalException {
         List<String> errorsList = new ArrayList<>();
-        if (customer == null) {
-            throw new TechnicalException("Customer is null");
+        if (customerDN == null) {
+            throw new TechnicalException("CustomerDN is null");
         } else {
-            testStringMandatory(errorsList, customer.getLastName(), "nom", 30, 2);
-            testStringMandatory(errorsList, customer.getFirstName(), "prenom", 40, 2);
-            testStringMandatory(errorsList, customer.getEmail(), "email", 100, 2);
-            testStringMandatory(errorsList, customer.getPassword(), "mot de passe", 30, 8);
+            testStringMandatory(errorsList, customerDN.getLastName(), "nom", 30, 2);
+            testStringMandatory(errorsList, customerDN.getFirstName(), "prenom", 40, 2);
+            testStringMandatory(errorsList, customerDN.getEmail(), "email", 100, 2);
+            testStringMandatory(errorsList, customerDN.getPassword(), "mot de passe", 30, 8);
             if (!errorsList.isEmpty()) {
                 throw new BusinessException(String.join(",", errorsList), errorsList);
             }

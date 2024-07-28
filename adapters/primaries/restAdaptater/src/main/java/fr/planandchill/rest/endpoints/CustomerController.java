@@ -1,6 +1,6 @@
 package fr.planandchill.rest.endpoints;
 
-import fr.planandchill.models.Customer;
+import fr.planandchill.models.CustomerDN;
 import fr.planandchill.use.cases.customer.CreateCustomerUE;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,9 +24,9 @@ public class CustomerController {
 
     @CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.POST}, allowedHeaders = {"Content-Type", "Authorization"})
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody Customer customer) {
+    public ResponseEntity<?> save(@RequestBody CustomerDN customerDN) {
         try {
-            return new ResponseEntity<>(this.createCustomerUE.execute(customer), HttpStatus.OK);
+            return new ResponseEntity<>(this.createCustomerUE.execute(customerDN), HttpStatus.OK);
         } catch (Exception e) {
             LOG.error(e.getMessage());
             e.printStackTrace();

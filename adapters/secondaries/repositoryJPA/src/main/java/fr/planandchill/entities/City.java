@@ -11,7 +11,6 @@ import jakarta.persistence.*;
 @Table(name = "city")
 public class City {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "insee_city", nullable = false)
     private Integer id;
 

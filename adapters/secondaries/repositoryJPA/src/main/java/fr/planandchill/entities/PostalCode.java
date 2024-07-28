@@ -1,15 +1,18 @@
 package fr.planandchill.entities;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-
-@Getter
-@Setter
+@Entity
 @Table(name = "postal_code")
 public class PostalCode {
     @Id
     @Column(name = "code", nullable = false, length = 50)
     private String code;
+
+    public PostalCode() {
+    }
+
+    public PostalCode(String number) {
+        this.code = number;
+    }
 }

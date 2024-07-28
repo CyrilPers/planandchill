@@ -1,18 +1,21 @@
 package fr.planandchill.entities;
 
 import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Getter
+@Setter
 @Entity
+@Builder
 @AllArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "user")
 public class User {
     @Id
@@ -51,9 +54,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "id_address")
     )
     private List<Address> addresses;
-
-    @OneToOne(mappedBy = "idUser")
-    private Customer customer;
 
     @OneToMany(mappedBy = "idUser")
     private List<Token> tokens = new ArrayList<>();
@@ -150,14 +150,6 @@ public class User {
 
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public List<Token> getTokens() {

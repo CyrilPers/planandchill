@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @Builder
-public class Customer {
+public class CustomerDN {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -19,7 +19,7 @@ public class Customer {
     private LocalDateTime creationDate;
     private Boolean advertising;
 
-    public Customer() {
+    public CustomerDN() {
 
     }
 }

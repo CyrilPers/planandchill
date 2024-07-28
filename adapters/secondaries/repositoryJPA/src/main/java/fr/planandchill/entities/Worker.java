@@ -1,5 +1,4 @@
 package fr.planandchill.entities;
-import fr.planandchill.models.Customer;
 import lombok.Getter;
 import lombok.Setter;
 

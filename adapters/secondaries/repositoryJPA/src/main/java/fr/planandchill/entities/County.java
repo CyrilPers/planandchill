@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 
 @Getter
 @Setter
+@Entity
 @Table(name = "county")
 public class County {
     @Id
