@@ -1,15 +1,15 @@
 package fr.planandchill.entities;
-
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
+@Entity
 @Table(name = "company")
 public class Company {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_company", nullable = false, length = 50)
     private String idCompany;
 
@@ -28,7 +28,7 @@ public class Company {
     @Column(name = "adminLink", length = 50)
     private String adminLink;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_address", nullable = false)
-    private Address idAddress;
+    @OneToOne
+    @JoinColumn(name = "id_address", referencedColumnName = "id_address")
+    private Address address;
 }

@@ -3,7 +3,7 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "appointment_state")
 public class AppointmentState {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_apppointment_state", nullable = false)
     private Integer id;
 

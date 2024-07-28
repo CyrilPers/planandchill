@@ -3,7 +3,7 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Getter
@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @Table(name = "invoice_line")
 public class InvoiceLine {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_invoice_line", nullable = false)
     private Integer id;
 

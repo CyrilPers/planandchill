@@ -1,5 +1,5 @@
 package fr.planandchill.entities;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 import lombok.Getter;

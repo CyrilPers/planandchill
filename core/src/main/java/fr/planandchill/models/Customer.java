@@ -1,15 +1,12 @@
 package fr.planandchill.models;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@Builder
 public class Customer {
     private Integer id;
     private String firstName;
@@ -21,4 +18,8 @@ public class Customer {
     private Boolean accountLocked = false;
     private LocalDateTime creationDate;
     private Boolean advertising;
+
+    public Customer() {
+
+    }
 }

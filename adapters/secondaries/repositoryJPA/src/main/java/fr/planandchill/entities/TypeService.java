@@ -3,7 +3,7 @@ package fr.planandchill.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "type_service")
 public class TypeService {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_service_type", nullable = false, length = 50)
     private String idServiceType;
 
