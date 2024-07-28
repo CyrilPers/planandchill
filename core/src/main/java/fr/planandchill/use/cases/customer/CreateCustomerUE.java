@@ -68,7 +68,7 @@ public class CreateCustomerUE {
                 if (!Pattern.matches(".*[A-Z]*.", str)) {
                     errorsList.add("Le " + fieldName + " doit contenir au moins une lettre majuscule");
                 }
-                if (!Pattern.matches(".*[a-z]µ.+", str)) {
+                if (!Pattern.matches(".*[a-z]*.+", str)) {
                     errorsList.add("Le " + fieldName + " doit contenir au moins une lettre minuscule");
                 }
                 if (!Pattern.matches(".*[0-9]*.", str)) {

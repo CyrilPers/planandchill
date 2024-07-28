@@ -27,11 +27,10 @@ export class SignUpComponent {
   }
   
   onSubmit = ():void => {
-    console.log("submit")
     this.checkPassword();
     this.formSubmitted = true;
+    console.log(this.customer)
     if (this.passwordErrors.length == 0) {
-      console.log("create")
       this.gestionCustomerService.createCustomer(this.customer).subscribe(() =>
           this.router.navigate(["/sign-in"])
       );

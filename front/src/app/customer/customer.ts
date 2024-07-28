@@ -1,7 +1,7 @@
 export class Customer {
     id: number;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     phone: string;
     email: string;
     password: string;
@@ -12,15 +12,15 @@ export class Customer {
     advertising: boolean;
 
     constructor(
-        firstname: string = '',
-        lastname: string = '',
+        firstName: string = '',
+        lastName: string = '',
         phone: string  = '',
         email: string  = '',
         password: string = '',
         advertising: boolean  = false
     ) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.phone = phone;
         this.email = email;
         this.password = password;
