@@ -16,9 +16,13 @@ import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class CreateCustomerUE {
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private final Logger LOG = LoggerFactory.getLogger(CreateCustomerUE.class);
 
@@ -31,6 +35,8 @@ public class CreateCustomerUE {
     public CustomerDN execute(CustomerDN customerDN) throws TechnicalException, BusinessException {
         customerDN.setCreationDate(LocalDateTime.now());
         checkBusinessRules(customerDN);
+        String passwordCrypted = passwordEncoder.encode(customerDN.getPassword());
+        customerDN.setPassword(passwordCrypted);
         try {
             return repo.create(customerDN);
         } catch (UnknownHostException | SQLException e) {

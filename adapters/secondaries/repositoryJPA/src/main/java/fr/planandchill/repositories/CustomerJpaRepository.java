@@ -8,13 +8,16 @@ import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerJpaRepository implements ICustomerRepositoryPT {
+public class CustomerJpaRepository implements ICustomerRepositoryPT, UserDetailsService {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomerJpaRepository.class);
 
@@ -43,12 +46,29 @@ public class CustomerJpaRepository implements ICustomerRepositoryPT {
     }
 
     @Override
+    public CustomerDN load(String email) throws SQLException {
+        try {
+            TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c WHERE c.email = :email", Customer.class);
+            CustomerDN result = (CustomerDN) query.getResultList();
+            return result;
+        } catch (Exception e) {
+            LOG.error("Error while loading customer ", e);
+            throw new SQLException("Error while loading customer ");
+        }
+    }
+
+    @Override
     public List<CustomerDN> getAll() throws UnknownHostException, SQLException {
         return new ArrayList<>();
     }
 
     @Override
     public CustomerDN findById(String id) throws UnknownHostException, SQLException {
+        return null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return null;
     }
 }

@@ -12,6 +12,7 @@
         <module>adapters/secondaries/repositoryJPA</module>
         <module>core</module>
         <module>adapters/primaries/restAdaptater</module>
+        <module>adapters/primaries/authentificationAdaptater</module>
     </modules>
 
     <properties>
