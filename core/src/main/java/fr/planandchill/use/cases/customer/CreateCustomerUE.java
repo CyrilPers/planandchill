@@ -49,7 +49,7 @@ public class CreateCustomerUE {
             testStringMandatory(errorsList, customerDN.getFirstName(), "prénom", 40, 2);
             testStringMandatory(errorsList, customerDN.getEmail(), "email", 100, 2);
             testStringMandatory(errorsList, customerDN.getPassword(), "mot de passe", 30, 8);
-            testStringMandatory(errorsList, customerDN.getPhoneNumber(), "téléphone", 3, 14);
+            testStringMandatory(errorsList, customerDN.getPhoneNumber(), "téléphone", 14, 6);
             if (!errorsList.isEmpty()) {
                 throw new BusinessException(String.join(",", errorsList), errorsList);
             }

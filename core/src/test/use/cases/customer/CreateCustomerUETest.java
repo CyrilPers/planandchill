@@ -5,13 +5,20 @@ import fr.planandchill.exceptions.BusinessException;
 import fr.planandchill.exceptions.TechnicalException;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 import fr.planandchill.use.cases.customer.CreateCustomerUE;
-import junit.framework.TestCase;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.net.UnknownHostException;
+import java.sql.SQLException;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreateCustomerUETest {
@@ -19,6 +26,7 @@ public class CreateCustomerUETest {
     @Mock
     private ICustomerRepositoryPT repository;
 
+    @InjectMocks
     private CreateCustomerUE useCase;
 
     @Before
@@ -42,7 +50,7 @@ public class CreateCustomerUETest {
     }
 
     @Test
-    public void should_return_customer() throws BusinessException, TechnicalException {
+    public void should_return_customer() throws BusinessException, TechnicalException, UnknownHostException, SQLException {
         CustomerDN customerDN = new CustomerDN()
                 .builder()
                 .firstName("John")
@@ -51,11 +59,14 @@ public class CreateCustomerUETest {
                 .phoneNumber("33612345678")
                 .password("!Motdepasse123")
                 .build();
+
+        Mockito.when(repository.create(any(CustomerDN.class))).thenReturn(customerDN);
+
         CustomerDN customer = this.useCase.execute(customerDN);
         Assertions.assertThat(customer).isNotNull();
         Assertions.assertThat(customer.getFirstName()).isEqualTo("John");
         Assertions.assertThat(customer.getLastName()).isEqualTo("Wick");
         Assertions.assertThat(customer.getEmail()).isEqualTo("john@wick.com");
-        Assertions.assertThat(customer.getPhoneNumber()).isEqualTo("+33612345678");
+        Assertions.assertThat(customer.getPhoneNumber()).isEqualTo("33612345678");
     }
 }
