@@ -1,6 +1,6 @@
 package fr.planandchill.rest.endpoints;
 
-import fr.planandchill.models.CustomerDN;
+import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.use.cases.customer.CreateCustomerUE;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

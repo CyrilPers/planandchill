@@ -1,8 +1,7 @@
 package fr.planandchill.repositories;
 
 import fr.planandchill.entities.Customer;
-import fr.planandchill.entities.PostalCode;
-import fr.planandchill.models.CustomerDN;
+import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 
 import jakarta.persistence.*;
@@ -34,8 +33,6 @@ public class CustomerJpaRepository implements ICustomerRepositoryPT {
         customer.setPhoneNumber(customerDN.getPhoneNumber());
         customer.setCreationDate(customerDN.getCreationDate());
         customer.setAdvertising(false);
-
-
         try {
             em.persist(customer);
             return customerDN;

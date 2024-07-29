@@ -1,7 +1,7 @@
 package fr.planandchill.use.cases.customer;
 
 import fr.planandchill.exceptions.TechnicalException;
-import fr.planandchill.models.CustomerDN;
+import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 import fr.planandchill.exceptions.BusinessException;
 
@@ -30,7 +30,7 @@ public class CreateCustomerUE {
 
     public CustomerDN execute(CustomerDN customerDN) throws TechnicalException, BusinessException {
         customerDN.setCreationDate(LocalDateTime.now());
-        checkBusinessRules(customerDN); // check if the customerDN is valid
+        checkBusinessRules(customerDN);
         try {
             return repo.create(customerDN);
         } catch (UnknownHostException | SQLException e) {
@@ -49,6 +49,7 @@ public class CreateCustomerUE {
             testStringMandatory(errorsList, customerDN.getFirstName(), "prenom", 40, 2);
             testStringMandatory(errorsList, customerDN.getEmail(), "email", 100, 2);
             testStringMandatory(errorsList, customerDN.getPassword(), "mot de passe", 30, 8);
+            testStringMandatory(errorsList, customerDN.getPhoneNumber(), "numéro de téléphone", 3, 14);
             if (!errorsList.isEmpty()) {
                 throw new BusinessException(String.join(",", errorsList), errorsList);
             }
@@ -59,13 +60,13 @@ public class CreateCustomerUE {
     private void testStringMandatory(List<String> errorsList, String str, String fieldName, int maxLength, int minLength) {
         String startWord = getStartWord(fieldName);
         if (StringUtils.isEmpty(str)) {
-            errorsList.add(startWord + fieldName + " d'une personne est obligatoire");
+            errorsList.add(startWord + fieldName + " est obligatoire");
         } else {
             if (str.length() > maxLength) {
-                errorsList.add(startWord + fieldName + " d'une personne ne doit pas dépasser " + maxLength + " caracteres");
+                errorsList.add(startWord + fieldName + " ne doit pas dépasser " + maxLength + " caracteres");
             }
             if (str.length() < minLength) {
-                errorsList.add(startWord + fieldName + " d'une personne doit avoir au minimum " + minLength + " caracteres");
+                errorsList.add(startWord + fieldName + " doit avoir au minimum " + minLength + " caracteres");
             }
             if (fieldName.equals("mot de passe")) {
                 if (!Pattern.matches(".*[A-Z]*.", str)) {

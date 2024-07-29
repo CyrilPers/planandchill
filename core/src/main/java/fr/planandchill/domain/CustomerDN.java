@@ -1,4 +1,4 @@
-package fr.planandchill.models;
+package fr.planandchill.domain;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class CustomerDN {
     private Integer id;
     private String firstName;
@@ -15,11 +16,9 @@ public class CustomerDN {
     private String email;
     private String password;
     private String phoneNumber;
-    private Boolean accountLocked = false;
+    private Boolean accountLocked;
     private LocalDateTime creationDate;
     private Boolean advertising;
 
-    public CustomerDN() {
 
-    }
 }

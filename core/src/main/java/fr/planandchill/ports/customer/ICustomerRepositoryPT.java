@@ -1,6 +1,6 @@
 package fr.planandchill.ports.customer;
 
-import fr.planandchill.models.CustomerDN;
+import fr.planandchill.domain.CustomerDN;
 
 import java.net.UnknownHostException;
 import java.sql.SQLException;
