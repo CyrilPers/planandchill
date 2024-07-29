@@ -38,7 +38,7 @@ public class CreateCustomerUETest {
                 .build();
         Assertions.assertThatCode(() -> {
             this.useCase.execute(customerDN);
-        }).hasMessage("Le nom est obligatoire,Le prenom est obligatoire,L'email est obligatoire,Le mot de passe est obligatoire,Le numéro de téléphone est obligatoire").isInstanceOf(BusinessException.class);
+        }).hasMessage("Le nom est obligatoire,Le prénom est obligatoire,L'email est obligatoire,Le mot de passe est obligatoire,Le téléphone est obligatoire").isInstanceOf(BusinessException.class);
     }
 
     @Test

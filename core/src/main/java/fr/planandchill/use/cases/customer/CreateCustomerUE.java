@@ -46,10 +46,10 @@ public class CreateCustomerUE {
             throw new TechnicalException("CustomerDN is null");
         } else {
             testStringMandatory(errorsList, customerDN.getLastName(), "nom", 30, 2);
-            testStringMandatory(errorsList, customerDN.getFirstName(), "prenom", 40, 2);
+            testStringMandatory(errorsList, customerDN.getFirstName(), "prénom", 40, 2);
             testStringMandatory(errorsList, customerDN.getEmail(), "email", 100, 2);
             testStringMandatory(errorsList, customerDN.getPassword(), "mot de passe", 30, 8);
-            testStringMandatory(errorsList, customerDN.getPhoneNumber(), "numéro de téléphone", 3, 14);
+            testStringMandatory(errorsList, customerDN.getPhoneNumber(), "téléphone", 3, 14);
             if (!errorsList.isEmpty()) {
                 throw new BusinessException(String.join(",", errorsList), errorsList);
             }

@@ -19,6 +19,4 @@ public class CustomerDN {
     private Boolean accountLocked;
     private LocalDateTime creationDate;
     private Boolean advertising;
-
-
 }
