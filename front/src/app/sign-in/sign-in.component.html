@@ -10,7 +10,7 @@
                 type="email"
                 id="email"
                 name="email"
-                ngModel
+                [(ngModel)]="customer.email"
                 required
         />
         @if (signInForm.controls['email'].touched &&
@@ -25,7 +25,7 @@
             <label for="password">Mot de passe</label>
             <a href="" class="password-lost">Mot de passe oublié ?</a>
         </div>
-        <input type="password" id="password" name="password" ngModel required/>
+        <input type="password" id="password" name="password" [(ngModel)]="customer.password" required/>
         @if (signInForm.controls['password'].touched &&
         signInForm.controls['password'].invalid) {
             <div class="errors-list">

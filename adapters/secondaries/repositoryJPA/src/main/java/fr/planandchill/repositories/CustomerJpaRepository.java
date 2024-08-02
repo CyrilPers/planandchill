@@ -4,13 +4,12 @@ import fr.planandchill.entities.Customer;
 import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.UnknownHostException;
 import java.sql.SQLException;
@@ -50,11 +49,11 @@ public class CustomerJpaRepository implements ICustomerRepositoryPT {
         try {
             TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c WHERE c.email = :email", Customer.class);
             CustomerDN result = (CustomerDN) query.getResultList();
-            return result;
         } catch (Exception e) {
             LOG.error("Error while loading customer ", e);
             throw new SQLException("Error while loading customer ");
         }
+        throw new SQLException("Error while loading customer ");
     }
 
     @Override

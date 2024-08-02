@@ -1,7 +1,13 @@
 package fr.planandchill.domain;
 
-import java.time.LocalDateTime;
+import lombok.*;
+import java.util.List;
 
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDN {
     private Integer id;
     private String firstName;
@@ -12,4 +18,5 @@ public class UserDN {
     private String phoneNumber;
     private Boolean accountLocked = false;
     private String creationDate;
+    private List<RoleDN> roles;
 }

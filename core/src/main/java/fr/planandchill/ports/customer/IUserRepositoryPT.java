@@ -7,5 +7,5 @@ import java.sql.SQLException;
 
 public interface IUserRepositoryPT {
 
-    UserDN load(String email) throws UnknownHostException, SQLException;
+    UserDN findByEmail(String email) throws UnknownHostException, SQLException;
 }

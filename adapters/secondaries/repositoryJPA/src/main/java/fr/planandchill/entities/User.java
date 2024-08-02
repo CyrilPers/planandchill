@@ -13,8 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Builder
-@AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "user")
 public class User {
@@ -57,6 +55,15 @@ public class User {
 
     @OneToMany(mappedBy = "idUser")
     private List<Token> tokens = new ArrayList<>();
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "asso_28",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_permission_level")
+    )
+    private List<Role> roles;
 
     public User() {
 
