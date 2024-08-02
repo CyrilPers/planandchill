@@ -3,6 +3,7 @@ package use.cases.customer;
 import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.exceptions.BusinessException;
 import fr.planandchill.exceptions.TechnicalException;
+import fr.planandchill.ports.auth.IAuthentificationPT;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 import fr.planandchill.use.cases.customer.CreateCustomerUE;
 import org.assertj.core.api.Assertions;
@@ -18,7 +19,6 @@ import java.net.UnknownHostException;
 import java.sql.SQLException;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreateCustomerUETest {
@@ -26,12 +26,14 @@ public class CreateCustomerUETest {
     @Mock
     private ICustomerRepositoryPT repository;
 
+    private IAuthentificationPT auth;
+
     @InjectMocks
     private CreateCustomerUE useCase;
 
     @Before
     public void setUp() {
-        this.useCase = new CreateCustomerUE(repository);
+        this.useCase = new CreateCustomerUE(repository, auth);
     }
 
     @Test

@@ -1,17 +1,19 @@
 package fr.planandchill.entities;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import jakarta.persistence.*;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "company")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_company", nullable = false, length = 50)
-    private String idCompany;
+    private Integer idCompany;
 
     @Column(name = "name", nullable = false, length = 50)
     private String name;
@@ -31,4 +33,5 @@ public class Company {
     @OneToOne
     @JoinColumn(name = "id_address", referencedColumnName = "id_address")
     private Address address;
+
 }

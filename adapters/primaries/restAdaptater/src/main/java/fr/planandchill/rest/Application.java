@@ -3,7 +3,9 @@ package fr.planandchill.rest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = "fr.planandchill")
 @SpringBootApplication()
 @EntityScan(basePackages = "fr.planandchill.entities")
 public class Application {

@@ -8,16 +8,16 @@ import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerJpaRepository implements ICustomerRepositoryPT, UserDetailsService {
+public class CustomerJpaRepository implements ICustomerRepositoryPT {
 
     private static final Logger LOG = LoggerFactory.getLogger(CustomerJpaRepository.class);
 
@@ -67,8 +67,4 @@ public class CustomerJpaRepository implements ICustomerRepositoryPT, UserDetails
         return null;
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
 }

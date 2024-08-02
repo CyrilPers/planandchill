@@ -1,5 +1,7 @@
 package fr.planandchill.rest.config.use.cases.customer;
 
+import fr.planandchill.authentification.AuthUtils;
+import fr.planandchill.ports.auth.IAuthentificationPT;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 import fr.planandchill.repositories.CustomerJpaRepository;
 import fr.planandchill.use.cases.customer.CreateCustomerUE;
@@ -15,9 +17,12 @@ public class CustomerUECfg {
     public ICustomerRepositoryPT repository()  {return new CustomerJpaRepository();}
 
     @Bean
+    public IAuthentificationPT auth(){return new AuthUtils();}
+
+    @Bean
     @DependsOn
-    public CreateCustomerUE createCustomerUE(ICustomerRepositoryPT repository) {
-        return new CreateCustomerUE(repository);
+    public CreateCustomerUE createCustomerUE(ICustomerRepositoryPT repository, IAuthentificationPT auth) {
+        return new CreateCustomerUE(repository, auth);
     }
 
     @Bean
