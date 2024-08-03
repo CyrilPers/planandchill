@@ -2,7 +2,7 @@ package fr.planandchill.repositories;
 
 import fr.planandchill.domain.UserDN;
 import fr.planandchill.entities.User;
-import fr.planandchill.ports.customer.IUserRepositoryPT;
+import fr.planandchill.ports.user.IUserRepositoryPT;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;

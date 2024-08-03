@@ -8,7 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class CustomerUseCases {
-
     private CreateCustomerUE createCustomerUseCase;
-
 }

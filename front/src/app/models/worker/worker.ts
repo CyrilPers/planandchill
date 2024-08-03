@@ -1,15 +1,13 @@
-export class Customer {
+import {Company} from "../company/company";
+
+export class Worker {
     id: number;
     firstName: string;
     lastName: string;
     phone: string;
     email: string;
     password: string;
-    address: string;
-    zipCode: string;
-    city: string;
-    country: string;
-    advertising: boolean;
+    companies: Company[];
 
     constructor(
         firstName: string = '',
@@ -17,13 +15,12 @@ export class Customer {
         phone: string  = '',
         email: string  = '',
         password: string = '',
-        advertising: boolean  = false
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.advertising = advertising;
+        this.companies = [new Company()];
     }
 }

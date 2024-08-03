@@ -1,4 +1,4 @@
-package fr.planandchill.ports.customer;
+package fr.planandchill.ports.user;
 
 import fr.planandchill.domain.UserDN;
 

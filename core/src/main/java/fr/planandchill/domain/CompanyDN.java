@@ -16,4 +16,5 @@ public class CompanyDN {
     private Boolean enabled;
     private Integer textMessageBalance;
     private String adminLink;
+    private LocalDateTime creationDate;
 }

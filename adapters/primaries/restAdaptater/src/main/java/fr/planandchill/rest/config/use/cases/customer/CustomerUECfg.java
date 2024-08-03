@@ -14,10 +14,10 @@ import org.springframework.context.annotation.DependsOn;
 public class CustomerUECfg {
 
     @Bean
-    public ICustomerRepositoryPT repository()  {return new CustomerJpaRepository();}
+    protected ICustomerRepositoryPT customerRepository()  {return new CustomerJpaRepository();}
 
     @Bean
-    public IAuthentificationPT auth(){return new AuthUtils();}
+    protected IAuthentificationPT auth(){return new AuthUtils();}
 
     @Bean
     @DependsOn

@@ -5,18 +5,16 @@ import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.ports.auth.IAuthentificationPT;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
 import fr.planandchill.exceptions.BusinessException;
-
-import org.apache.commons.lang3.StringUtils;
-
 import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static fr.planandchill.utils.user.TestStringMandatory.testStringMandatory;
 
 public class CreateCustomerUE {
 
@@ -25,6 +23,7 @@ public class CreateCustomerUE {
     private ICustomerRepositoryPT repo;
 
     private IAuthentificationPT auth;
+
 
     public CreateCustomerUE(ICustomerRepositoryPT repo, IAuthentificationPT auth) {
         this.repo = repo;
@@ -60,38 +59,4 @@ public class CreateCustomerUE {
             }
         }
     }
-
-
-    private void testStringMandatory(List<String> errorsList, String str, String fieldName, int maxLength, int minLength) {
-        String startWord = getStartWord(fieldName);
-        if (StringUtils.isEmpty(str)) {
-            errorsList.add(startWord + fieldName + " est obligatoire");
-        } else {
-            if (str.length() > maxLength) {
-                errorsList.add(startWord + fieldName + " ne doit pas dépasser " + maxLength + " caracteres");
-            }
-            if (str.length() < minLength) {
-                errorsList.add(startWord + fieldName + " doit avoir au minimum " + minLength + " caracteres");
-            }
-            if (fieldName.equals("mot de passe")) {
-                if (!Pattern.matches(".*[A-Z]*.", str)) {
-                    errorsList.add("Le " + fieldName + " doit contenir au moins une lettre majuscule");
-                }
-                if (!Pattern.matches(".*[a-z]*.+", str)) {
-                    errorsList.add("Le " + fieldName + " doit contenir au moins une lettre minuscule");
-                }
-                if (!Pattern.matches(".*[0-9]*.", str)) {
-                    errorsList.add("Le " + fieldName + " doit contenir au moins un chiffre");
-                }
-                if (!Pattern.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\\\"\\|,.<>/?]*.", str)) {
-                    errorsList.add("Le " + fieldName + " doit pas contenir au moins un caractère spécial");
-                }
-            }
-        }
-    }
-
-    private String getStartWord(String fieldName) {
-        return fieldName.equals("email") ? "L'" : "Le ";
-    }
-
 }

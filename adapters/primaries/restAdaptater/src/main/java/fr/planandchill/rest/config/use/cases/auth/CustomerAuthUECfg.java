@@ -1,8 +1,6 @@
 package fr.planandchill.rest.config.use.cases.auth;
 
-import fr.planandchill.ports.customer.ICustomerRepositoryPT;
-import fr.planandchill.ports.customer.IUserRepositoryPT;
-import fr.planandchill.repositories.CustomerJpaRepository;
+import fr.planandchill.ports.user.IUserRepositoryPT;
 import fr.planandchill.repositories.UserJpaRepository;
 import fr.planandchill.use.cases.authentification.LoginCustomerUE;
 import org.springframework.context.annotation.Bean;

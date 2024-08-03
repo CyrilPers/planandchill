@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { ButtonComponent } from '../reusable/button/button.component';
 import { FormsModule, NgForm} from '@angular/forms';
-import { checkForm } from '../utils/checkPassword';
-import {GestionCustomerService} from "../core/services/gestion-customer/gestion-customer.service";
 import {Router} from "@angular/router";
-import {Customer} from "../models/customer/customer";
+import {GestionCompanyService} from "../../core/services/gestion-company/gestion-company.service";
+import {ButtonComponent} from "../../reusable/button/button.component";
+import {Worker} from "../../models/worker/worker";
+import {checkForm} from "../../utils/checkPassword";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,22 +16,23 @@ import {Customer} from "../models/customer/customer";
 export class SignUpComponent {
   passwordErrors: String [] = [];
   formSubmitted: boolean = false;
-  customer: Customer;
+  worker: Worker;
+  cguAccepted: boolean = false;
   @ViewChild('signInForm') signInForm: NgForm;
 
   constructor(private router: Router,
-              private gestionCustomerService: GestionCustomerService) {}
+              private gestionCompanyService: GestionCompanyService) {}
 
   ngOnInit(): void {
-    this.initCustomer(this.customer);
+    this.initCustomer(this.worker);
   }
   
   onSubmit = ():void => {
     this.checkPassword();
     this.formSubmitted = true;
     if (this.passwordErrors.length == 0) {
-      this.gestionCustomerService.createCustomer(this.customer).subscribe(() =>
-          this.router.navigate(["/sign-in"])
+      this.gestionCompanyService.createCompany(this.worker).subscribe(() =>
+          this.router.navigate(["/company/sign-in"])
       );
     }
   }
@@ -45,7 +46,7 @@ export class SignUpComponent {
     }
   }
 
-  private initCustomer(customer: Customer) {
-    this.customer = new Customer();
+  private initCustomer(worker: Worker) {
+    this.worker = new Worker();
   }
 }

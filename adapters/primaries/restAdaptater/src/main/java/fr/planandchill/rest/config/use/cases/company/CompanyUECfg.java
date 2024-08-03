@@ -1,19 +1,21 @@
 package fr.planandchill.rest.config.use.cases.company;
 
-import fr.planandchill.ports.customer.ICompanyRepositoryPT;
+import fr.planandchill.ports.company.ICompanyRepositoryPT;
 import fr.planandchill.repositories.CompanyJpaRepository;
 import fr.planandchill.use.cases.company.CreateCompanyUE;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+@Configuration
 public class CompanyUECfg {
 
     @Bean
-    private ICompanyRepositoryPT repository() {return new CompanyJpaRepository();}
+    protected ICompanyRepositoryPT companyRepository() {return new CompanyJpaRepository();}
 
     @Bean
     @DependsOn
-    public CreateCompanyUE createCompanyUE(ICompanyRepositoryPT repository) {
+    protected CreateCompanyUE createCompanyUE(ICompanyRepositoryPT repository) {
         return new CreateCompanyUE(repository);
     }
 

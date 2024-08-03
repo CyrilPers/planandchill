@@ -3,9 +3,6 @@ package fr.planandchill.repositories;
 import fr.planandchill.entities.Customer;
 import fr.planandchill.domain.CustomerDN;
 import fr.planandchill.ports.customer.ICustomerRepositoryPT;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;

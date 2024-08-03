@@ -1,6 +1,6 @@
 package fr.planandchill.use.cases.authentification;
 import fr.planandchill.domain.UserDN;
-import fr.planandchill.ports.customer.IUserRepositoryPT;
+import fr.planandchill.ports.user.IUserRepositoryPT;
 import fr.planandchill.use.cases.customer.CreateCustomerUE;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
