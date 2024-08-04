@@ -1,8 +1,4 @@
 import {Routes} from "@angular/router";
-import {map} from "rxjs/operators";
-import {CompanyComponent} from "./company/company.component";
-import {SignInComponent} from "./sign-in/sign-in.component";
-import {CompanySignUpComponent} from "./company/sign-up/company-sign-up.component";
 
 export const routes: Routes = [
     {
