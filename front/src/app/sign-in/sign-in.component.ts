@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../reusable/button/button.component';
 import { FormsModule, NgForm} from '@angular/forms';
-import { checkForm } from '../utils/checkPassword';
-import {Customer} from "../customer/customer";
 import {GestionCustomerService} from "../core/services/gestion-customer/gestion-customer.service";
 import {Router} from "@angular/router";
+import {Customer} from "../models/customer/customer";
 
 @Component({
   selector: 'app-sign-in',

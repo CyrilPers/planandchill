@@ -184,7 +184,7 @@
                 <label for="cgu">J'accepte les CGU</label>
             </div>
         </div>
-        @if (formSubmitted && signInForm.controls['cgu'] == false) {
+        @if (formSubmitted && !cguAccepted) {
             <div class="errors-list">
                 <span class="error-message">Veuillez accepter les CGU</span>
             </div>

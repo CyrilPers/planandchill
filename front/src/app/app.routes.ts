@@ -1,28 +1,37 @@
-import { Routes } from "@angular/router";
-import { map } from "rxjs/operators";
-import { HomeComponent } from "./home/home.component";
-import { CompanyComponent } from "./company/company.component";
-import { SignInComponent } from "./sign-in/sign-in.component";
-import { SignUpComponent } from "./sign-up/sign-up.component";
+import {Routes} from "@angular/router";
+import {map} from "rxjs/operators";
+import {CompanyComponent} from "./company/company.component";
+import {SignInComponent} from "./sign-in/sign-in.component";
+import {CompanySignUpComponent} from "./company/sign-up/company-sign-up.component";
+
 export const routes: Routes = [
-  {
-    path: "",
-    loadComponent: () => HomeComponent,
-  },
-  {
-    path: "company",
-    loadComponent: () => CompanyComponent,
-  },
-  {
-    path: "sign-in",
-    loadComponent: () => SignInComponent,
-  },
-  {
-    path: "sign-up",
-    loadComponent: () => SignUpComponent,
-  },
-  {
-    path: "**",
-    loadComponent: () => HomeComponent,
-  },
+    {
+        path: "",
+        loadComponent: () => import('./home/home.component').then(mod => mod.HomeComponent)
+    },
+    {
+        path: "company",
+        children: [
+            {
+                path: 'sign-up',
+                loadComponent: () => import('./company/sign-up/company-sign-up.component').then(mod => mod.CompanySignUpComponent)
+            },
+            {
+                path: '',
+                loadComponent: () => import('./company/company.component').then(mod => mod.CompanyComponent)
+            }
+        ],
+    },
+    {
+        path: "sign-in",
+        loadComponent: () => import('./sign-in/sign-in.component').then(mod => mod.SignInComponent),
+    },
+    {
+        path: "sign-up",
+        loadComponent: () => import('./sign-up/sign-up.component').then(mod => mod.SignUpComponent)
+    },
+    {
+        path: "**",
+      loadComponent: () => import('./page-not-found/page-not-found.component').then(mod => mod.PageNotFoundComponent)
+    },
 ];

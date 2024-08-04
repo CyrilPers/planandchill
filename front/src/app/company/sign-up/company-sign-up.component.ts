@@ -10,10 +10,10 @@ import {checkForm} from "../../utils/checkPassword";
   selector: 'app-sign-up',
   standalone: true,
   imports: [ButtonComponent, FormsModule],
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  templateUrl: './company-sign-up.component.html',
+  styleUrl: './company-sign-up.component.css'
 })
-export class SignUpComponent {
+export class CompanySignUpComponent {
   passwordErrors: String [] = [];
   formSubmitted: boolean = false;
   worker: Worker;
